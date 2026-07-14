@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start-server": "node server/index.js",
+    "rename-assets": "node scripts/rename-assets.js",
+    "optimize-media": "node scripts/optimize-media.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.4",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "netlify-cli": "^26.1.0",
+    "sharp": "^0.32.1"
+  }
+}

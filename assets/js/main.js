@@ -36,10 +36,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
       event.preventDefault();
-      alert('Thank you — your message has been received.');
-      form.reset();
+      const data = {
+        name: form.name?.value || '',
+        email: form.email?.value || '',
+        project: form.project?.value || '',
+        message: form.message?.value || ''
+      };
+
+      try {
+        const res = await fetch(form.action || '/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const payload = await res.json();
+        if (res.ok) {
+          alert(payload.message || 'Thank you — your message has been received.');
+          form.reset();
+        } else {
+          alert(payload.error || 'Submission failed — please try again later.');
+        }
+      } catch (err) {
+        console.error('Contact submit error', err);
+        alert('Submission failed — please check your connection.');
+      }
     });
   }
 });

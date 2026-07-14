@@ -1,3 +1,23 @@
+# Smart Surveillance Website — Local tools
+
+This repo is a static site with optional local server to receive contact form submissions and utility scripts.
+
+Quick start (install dependencies and run server):
+
+```bash
+npm install
+npm run start-server
+```
+
+Scripts:
+- `npm run rename-assets` — rename files in `assets/` replacing spaces with dashes and update references in root files.
+- `npm run optimize-media` — convert JPG/PNG images under `assets/` to WebP and generate thumbnails (requires `sharp` native build).
+
+Backend:
+- `server/index.js` — simple Express endpoint `POST /api/contact` that saves to `server/contacts.json` and tries to send email if SMTP environment variables are set. See `server/.env.example`.
+
+Deployment:
+- For static hosting (Netlify/Vercel/GitHub Pages), run the rename script and deploy the repository. For form submissions, either use a server (this repo's `server/`) or a form service (Formspree, Netlify Forms).
 # smart-surveillance-website
 
 Static website for SMART SURVEILLANCE SOLUTIONS INC.
