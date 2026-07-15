@@ -99,6 +99,10 @@ video {
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
 }
 
+.card-surface h5 {
+  color: #ffffff;
+}
+
 .btn-accent {
   background: var(--accent);
   border-color: var(--accent);
